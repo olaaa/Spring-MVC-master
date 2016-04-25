@@ -8,10 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Author: Georgy Gobozov
- * Date: 11.04.13
- */
+//аннотируют дао классы, то есть, класс работает с DataSource
 @Repository
 public class UserDaoImpl implements UserDao {
 

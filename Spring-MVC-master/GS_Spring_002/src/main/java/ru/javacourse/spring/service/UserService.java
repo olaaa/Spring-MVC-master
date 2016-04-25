@@ -8,18 +8,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Author: Georgy Gobozov
- * Date: 11.04.13
- */
+
+//уровень реализации БЛ
 @Service
 public class UserService {
 
     @Autowired
     private UserDao userDao;
 
+    // должен быть объявлен транзакшн менеджер
+    // работает через aop
     @Transactional
     public void create(User user) {
+        // могут быть проверки, отправка емейла
         userDao.create(user);
     }
 

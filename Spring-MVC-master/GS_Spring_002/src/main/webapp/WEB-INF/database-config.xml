@@ -10,6 +10,7 @@
         <property name="password" value="root"/>
     </bean>
 
+	<!--txManager будет работать, опираясь на аннотации-->
     <tx:annotation-driven transaction-manager="txManager"/>
 
     <bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
