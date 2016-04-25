@@ -6,10 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-/**
- * Author: Georgy Gobozov
- * Date: 10.04.13
- */
 // Controller обозначаются сервлеты
 @Controller
 // над классом может и не быть. Конкатенируется с путями до методов
