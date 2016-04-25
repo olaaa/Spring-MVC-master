@@ -30,10 +30,12 @@ public class MyController {
         return "bye";
     }
 
+    // supported method argument type
     @RequestMapping(value = {"/hello2", "/hello3"} ,method = {RequestMethod.GET, RequestMethod.POST},
             headers = "User-Agent: Android")
     public ModelAndView sayHello2(ModelMap model) {
         model.addAttribute("message", "Spring 3 MVC Hello World 2");
+        // разницы нет, возвращать стринг или ModelAndView
         return new ModelAndView("hello", model);
     }
 

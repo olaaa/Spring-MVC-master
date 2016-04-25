@@ -12,6 +12,7 @@
             /WEB-INF/dispatcher-servlet.xml
         </param-value>
     </context-param>
+	<!--слушает событие старта приложения и подсовывает спирнгу конфиг файл-->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
