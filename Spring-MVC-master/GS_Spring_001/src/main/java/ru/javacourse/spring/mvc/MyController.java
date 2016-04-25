@@ -10,14 +10,17 @@ import org.springframework.web.servlet.ModelAndView;
  * Author: Georgy Gobozov
  * Date: 10.04.13
  */
+// Controller обозначаются сервлеты
 @Controller
+// над классом может и не быть. Конкатенируется с путями до методов
 @RequestMapping("/spring")
 public class MyController {
 
-
+//    ModelMap объект, в который кладём данные, которые должны уйти на вью
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String sayHello(ModelMap model) {
         model.addAttribute("message", "Spring 3 MVC Hello World");
+        // страница, на которую надо перейти.
         return "hello";
     }
 
