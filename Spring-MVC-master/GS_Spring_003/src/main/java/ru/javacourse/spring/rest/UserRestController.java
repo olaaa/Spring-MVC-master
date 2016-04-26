@@ -10,12 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * Author: Georgy Gobozov
- * Date: 10.04.13
- * http://java.dzone.com/articles/rest-spring
- * http://websystique.com/springmvc/spring-4-mvc-contentnegotiatingviewresolver-example/
- */
 @Controller
 public class UserRestController {
 
@@ -24,10 +18,11 @@ public class UserRestController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/users", headers = {"accept=application/json", "accept=application/xml"})
+    // какой хеадер первый в массиве, тот и будет возвращаться по запросу "/users"
+    @RequestMapping(method = RequestMethod.GET, value = "/users", headers = {"accept=application/xml", "accept=application/json" })
     public Users getAllUsers(ModelMap model) {
         List<User> users = userService.getAll();
-        return  new Users(users);
+        return new Users(users);
     }
 
 

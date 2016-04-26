@@ -34,7 +34,8 @@
     -->
     <mvc:annotation-driven/>
 
-
+	<!--todo изучить!!-->
+ <!--зависимости от того, какой контекст хотим получить, такой и будем отдавать-->
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="order" value="1"/>
         <property name="mediaTypes">
