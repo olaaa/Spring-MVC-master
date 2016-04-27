@@ -8,8 +8,8 @@
     </tr>
     <c:forEach items="${users}" var="u">
         <tr>
-            <td><c:out value="${u.name}"/></td>
-            <td><c:out value="${u.email}"/></td>
+            <td>${u.name}</td>
+            <td>${u.email}</td>
             
             <td><a href="users/edit/${u.userId}">Edit</a>&nbsp;<a href="users/delete/${u.userId}">Delete</a></td>
 
@@ -18,13 +18,14 @@
 </table>
 <br>
 
-<form:form commandName="user" method="POST" action="/adduser" >
+<form:form commandName="user" method="POST" action="adduser" >
     <form:hidden path="userId"/>
 
     <table>
         <tr>
             <td>Name:</td>
             <td><form:input path="name"/></td>
+            <%--отображаются ошибки процесса валидации--%>
             <td><form:errors path="name"/></td>
         </tr>
 

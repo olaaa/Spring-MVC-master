@@ -20,7 +20,8 @@ public class ProjectValidator implements Validator {
     }
 
     public void validate(Object o, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "", "Project name is required");
+        // "name" поле объекта, который валидируем
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "", "Project name is required"); // и сообщение об ошибке
     }
 
 

@@ -42,7 +42,6 @@ public class TasksController {
 
 
     @Autowired
-    @Qualifier(value = "taskValidator")
     private TaskValidator taskValidator;
 
 
@@ -85,15 +84,14 @@ public class TasksController {
 
     @InitBinder
     public void initBinder(ServletRequestDataBinder binder) {
+        // поле с формы с именем "project"
         binder.registerCustomEditor(Project.class, "project", new PropertyEditorSupport() {
 
             public void setAsText(String text) {
-                if (text instanceof String) {
                     Integer projectId = Integer.parseInt(text);
                     Project project = (Project) projectDao.getById(projectId);
+//                в Task#project будет установлен project
                     setValue(project);
-
-                }
             }
 
             public String getAsText() {
@@ -106,6 +104,8 @@ public class TasksController {
             }
         });
 
+        // поле с формы с именем "users"
+//        CustomCollectionEditor(List.class) когда надо замапить коллекцию айдишнков
         binder.registerCustomEditor(List.class, "users", new CustomCollectionEditor(List.class) {
 
             protected Object convertElement(Object element) {

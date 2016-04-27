@@ -9,11 +9,11 @@
     </tr>
     <c:forEach items="${tasks}" var="t">
         <tr>
-            <td><c:out value="${t.name}"/></td>
-            <td><c:out value="${t.project.name}"/></td>
+            <td>${t.name}</td>
+            <td>${t.project.name}</td>
             <td>
                 <c:forEach var="u" items="${t.users}">
-                   <c:out value="${u.name}"/>&nbsp; 
+                   ${u.name},&nbsp;
                 </c:forEach>
             </td>
             <td><a href="tasks/edit/${t.taskId}">Edit</a>&nbsp;<a href="tasks/delete/${t.taskId}">Delete</a></td>
@@ -23,7 +23,7 @@
 </table>
 <br>
 
-<form:form commandName="task" method="POST" action="/addtask">
+<form:form commandName="task" method="POST" action="addtask">
     <form:hidden path="taskId"/>
 
     <table>
@@ -36,12 +36,15 @@
 
         <tr>
             <td>Project</td>
+            <%--выпадающий список--%>
+            <%--выбранное значение попадает в объект Task#project--%>
             <td><form:select path="project" items="${projects}" itemLabel="name" itemValue="projectId"/></td>
             <td><form:errors path="project"/></td>
         </tr>
 
         <tr>
             <td>Users</td>
+            <%--в списке можем выбрать сразу несколько пользователей--%>
             <td><form:select path="users" items="${users}" multiple="multiple" size="5" itemLabel="name"
                              itemValue="userId"/></td>
             <td><form:errors path="users"/></td>

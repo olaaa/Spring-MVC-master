@@ -1,3 +1,4 @@
+<%--когда мы делаем include этого файла, то импорты и заголовки переносятся тоже--%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ page session="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

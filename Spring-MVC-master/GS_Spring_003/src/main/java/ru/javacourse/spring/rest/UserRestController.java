@@ -40,6 +40,7 @@ public class UserRestController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/users/{id}")
+    // todo: [olga] разобраться
     @ResponseBody
     public String deleteUser(@PathVariable("id") String userId){
         User user = userService.getById(Long.parseLong(userId));
@@ -48,6 +49,7 @@ public class UserRestController {
     }
 
 
+    // todo: [olga] разобраться put
     @RequestMapping(method = RequestMethod.PUT, value = "/users/{id}")
     @ResponseBody
     public String updateUser(@PathVariable("id") String userId, @RequestBody User user){

@@ -7,11 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: GGobozov
- * Date: 01.12.2011
- * Time: 11:08:47
- * To change this template use File | Settings | File Templates.
+ * выполнятся в транзакции будут все public методы
+ * @param <T>
  */
 @Transactional
 public class AbstractDaoImpl<T> implements AbstractDao<T> {

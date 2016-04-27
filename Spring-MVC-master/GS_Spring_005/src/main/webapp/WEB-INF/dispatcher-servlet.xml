@@ -15,8 +15,8 @@
 
 
 
-    <bean id="userValidator" name="userValidator" class="ru.javacourse.spring.validation.UserValidator"/>
-    <bean id="projectValidator" name="projectValidator" class="ru.javacourse.spring.validation.ProjectValidator"/>
-    <bean id="taskValidator" name="taskValidator" class="ru.javacourse.spring.validation.TaskValidator"/>
+    <bean id="userValidator" class="ru.javacourse.spring.validation.UserValidator"/>
+    <bean id="projectValidator" class="ru.javacourse.spring.validation.ProjectValidator"/>
+    <bean id="taskValidator" class="ru.javacourse.spring.validation.TaskValidator"/>
 
 </beans>

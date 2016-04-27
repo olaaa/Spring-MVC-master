@@ -23,7 +23,6 @@ public class UsersController {
     private AbstractDao userDao;
 
     @Autowired
-    @Qualifier(value = "userValidator")
     private UserValidator userValidator;
 
 
@@ -50,6 +49,7 @@ public class UsersController {
         } else if (action.equalsIgnoreCase("delete")) {
             userDao.delete(user);
         }
+
         return "redirect:/users";
     }
 
@@ -57,12 +57,10 @@ public class UsersController {
     public String add(@ModelAttribute("user") User user, BindingResult result) {
         userValidator.validate(user, result);
         if (result.hasErrors())
-            return "/users";
+            return "users";
 
         userDao.update(user);
         return "redirect:/users";
 
     }
-
-
 }

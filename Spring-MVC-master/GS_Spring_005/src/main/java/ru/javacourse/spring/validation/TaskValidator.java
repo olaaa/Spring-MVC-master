@@ -14,7 +14,7 @@ import ru.javacourse.spring.model.Task;
  */
 public class TaskValidator implements Validator {
 
-
+    // говорит о том, будет ли данный класс валидировать объект
     public boolean supports(Class<?> aClass) {
         return Task.class.equals(aClass);
     }

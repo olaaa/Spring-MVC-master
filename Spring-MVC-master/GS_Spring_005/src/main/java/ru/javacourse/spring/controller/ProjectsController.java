@@ -15,22 +15,14 @@ import ru.javacourse.spring.validation.ProjectValidator;
 
 import java.util.List;
 
-/**
- * Created by IntelliJ IDEA.
- * User: GGobozov
- * Date: 01.12.2011
- * Time: 18:16:00
- * To change this template use File | Settings | File Templates.
- */
 @Controller
 public class ProjectsController {
 
     @Autowired
-    @Qualifier(value = "projectDao")
+    @Qualifier(value = "projectDao") // так как у нас несколько реализаций
     private AbstractDao projectDao;
 
     @Autowired
-    @Qualifier(value = "projectValidator")
     private ProjectValidator projectValidator;
 
 
@@ -39,7 +31,7 @@ public class ProjectsController {
         return "redirect:/projects";
     }
 
-
+    // для каждого запроса будет добавлять в модель по ключу "projects", значение — то, что возвращается
     @ModelAttribute("projects")
     public List<Project> getAllProjects() {
         return projectDao.findAll();
@@ -51,6 +43,10 @@ public class ProjectsController {
         return "projects";
     }
 
+    /**
+     * после выполнения Пост запросов, а также в урлах подобных "/projects/{action}/{id}", надо делать редирект,
+     * чтобы параметры запроса очищались!
+     */
     @RequestMapping(method = RequestMethod.GET, value = "/projects/{action}/{id}")
     public String handleAction(@PathVariable Integer id, @PathVariable String action, Model model) {
         Project project = (Project) projectDao.getById(id);
@@ -64,11 +60,16 @@ public class ProjectsController {
 
     }
 
+    // атрибута value нет. всё, что приходит с методом Пост, отправляется в этот метод
     @RequestMapping(method = RequestMethod.POST)
+    // @ModelAttribute("project") Project project
+    // нужно для того, чтобы спиринг взял поля с формы и слепил из них объект Project
+    // форма дб объявлена так
+    // <form:form commandName="project" method="POST" >
     public String add(@ModelAttribute("project") Project project, BindingResult result) {
         projectValidator.validate(project, result);
         if (result.hasErrors())
-            return "/projects";
+            return "projects";
 
         projectDao.update(project);
         return "redirect:/projects";
