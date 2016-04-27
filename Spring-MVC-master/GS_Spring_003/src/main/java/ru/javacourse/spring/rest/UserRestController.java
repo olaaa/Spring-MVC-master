@@ -1,12 +1,12 @@
 package ru.javacourse.spring.rest;
 
-import ru.javacourse.spring.entity.User;
-import ru.javacourse.spring.entity.Users;
-import ru.javacourse.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import ru.javacourse.spring.entity.User;
+import ru.javacourse.spring.entity.Users;
+import ru.javacourse.spring.service.UserService;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class UserRestController {
         return new Users(users);
     }
 
-
+    // будет рагировать на запросы с заголовками данного типа
     @RequestMapping(method = RequestMethod.GET, value = "/users/{id}", headers = {"accept=application/json", "accept=application/xml"})
     public User getUser(@PathVariable("id") String userId){
         User user = userService.getById(Long.parseLong(userId));
@@ -34,13 +34,13 @@ public class UserRestController {
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/users/create", headers = {"accept=application/json", "accept=application/xml"})
+    // десериализует в объект
     public String createUser(@RequestBody User user){
         userService.create(user);
         return "ok";
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/users/{id}")
-    // todo: [olga] разобраться
     @ResponseBody
     public String deleteUser(@PathVariable("id") String userId){
         User user = userService.getById(Long.parseLong(userId));
@@ -49,7 +49,6 @@ public class UserRestController {
     }
 
 
-    // todo: [olga] разобраться put
     @RequestMapping(method = RequestMethod.PUT, value = "/users/{id}")
     @ResponseBody
     public String updateUser(@PathVariable("id") String userId, @RequestBody User user){

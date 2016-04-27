@@ -35,6 +35,7 @@
     <mvc:annotation-driven/>
 
 	<!--todo изучить!!-->
+	<!--если использовать @RestController из 4 спринга, то настройка этого бина не нужна-->
  <!--зависимости от того, какой контекст хотим получить, такой и будем отдавать-->
     <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
         <property name="order" value="1"/>
