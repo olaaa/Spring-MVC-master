@@ -21,16 +21,18 @@ public class UserController {
     UserService userService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/users")
-    public @ResponseBody List<User> getAllUsers(ModelMap model) {
+    @ResponseBody
+    public List<User> getAllUsers(ModelMap model) {
         List<User> users = userService.getAll();
 // возвращается json
-//        @ResponseBody говорит Спринг, что возвращаемый оъект должен записаться в response
+//        @ResponseBody говорит Спринг, что возвращаемый объект должен записаться в response
         return users;
     }
 
 //@PathVariable("id") здесь будет строка, и это значение будет принимать userId
     @RequestMapping(method = RequestMethod.GET, value = "/users/{id}")
-    public  @ResponseBody User getUser(@PathVariable("id") String userId, ModelMap model) {
+    @ResponseBody
+    public User getUser(@PathVariable("id") String userId, ModelMap model) {
         // возвращается json, так как у нас проаннотированы jaxb в пакете entity!
         return userService.getById(Long.parseLong(userId));
     }
