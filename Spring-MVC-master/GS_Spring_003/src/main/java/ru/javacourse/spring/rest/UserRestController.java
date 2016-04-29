@@ -38,8 +38,7 @@ public class UserRestController {
     @ResponseStatus(value = HttpStatus.OK)
     // десериализует в объект
     public void createUser(@RequestBody User user){
-        throw new RuntimeException();
-//        userService.create(user);
+        userService.create(user);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/users/{id}")
