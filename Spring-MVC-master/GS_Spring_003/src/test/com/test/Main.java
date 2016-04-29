@@ -21,7 +21,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        //deleteUser(2);
+//        deleteUser(2);
         createuser();
 
     }
@@ -29,14 +29,13 @@ public class Main {
     public static void createuser() throws IOException{
 
         HttpClient client = new DefaultHttpClient();
-        HttpPost post = new HttpPost("http://localhost:8080/users/create");
+        HttpPost post = new HttpPost("http://localhost:8080/3/users/create");
 
-        StringEntity input = new StringEntity("[{user: {\n" +
-                "userId: 4,\n" +
-                "login: \"user4\",\n" +
-                "password: \"user4\",\n" +
-                "email: \"user4@mail.ru\"\n" +
-                "}}]");
+        StringEntity input = new StringEntity(" {  \n" +
+                "            \"login\":\"sdfsdf\",\n" +
+                "            \"password\":\"sdfsdaf\",\n" +
+                "            \"email\":\"sadfsdf@mail.ru\"\n" +
+                "         }");
 
 
         input.setContentType("application/json");
@@ -68,7 +67,7 @@ public class Main {
     public static void deleteUser(int id) throws IOException {
 
         HttpClient client = new DefaultHttpClient();
-        HttpDelete delete = new HttpDelete("http://localhost:8080/users/" + id);
+        HttpDelete delete = new HttpDelete("http://localhost:8080/3/users/" + id);
         HttpResponse response = client.execute(delete);
 
         int code = response.getStatusLine().getStatusCode();
@@ -88,9 +87,5 @@ public class Main {
         while ((output = br.readLine()) != null) {
             System.out.println(output);
         }
-
-
-
     }
-
 }

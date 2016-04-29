@@ -1,6 +1,7 @@
 package ru.javacourse.spring.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -34,10 +35,11 @@ public class UserRestController {
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/users/create", headers = {"accept=application/json", "accept=application/xml"})
+    @ResponseStatus(value = HttpStatus.OK)
     // десериализует в объект
-    public String createUser(@RequestBody User user){
-        userService.create(user);
-        return "ok";
+    public void createUser(@RequestBody User user){
+        throw new RuntimeException();
+//        userService.create(user);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/users/{id}")
